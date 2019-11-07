@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Discord.WebSocket;
 using NuBot.Modules;
 using Discord;
@@ -30,7 +30,7 @@ namespace NuBot
         }
         private async Task AddedReactEvent(Cacheable<IUserMessage, ulong> message, ISocketMessageChannel channel, SocketReaction reaction)
         {
-            if (message.Id == 641061488563322881) //must be updated after every rolecall. Update self reaction in 
+            if (message.Id == 641779659922472973) //must be updated after every rolecall. Update self reaction in misc.cs. Should consider changing this to channel ID
             {
                 var newuser = reaction.User.Value as SocketGuildUser; //for anyone new, assign them the member status
                 var user = reaction.User.Value as IGuildUser; //for assigning reaction roles 
@@ -45,9 +45,39 @@ namespace NuBot
                     await user.AddRoleAsync(role);
                     await _event.RoleAddedMessage(user, role);
                 }
+                if (reaction.Emote.Name == "gtav")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640797238024601601); //@GTAV
+                    await user.AddRoleAsync(role);
+                    await _event.RoleAddedMessage(user, role);
+                }
                 if (reaction.Emote.Name == "mhw")
                 {
                     var role = ((ITextChannel)channel).Guild.GetRole(640808758628450324); //@Monster Hunter
+                    await user.AddRoleAsync(role);
+                    await _event.RoleAddedMessage(user, role);
+                }
+                if (reaction.Emote.Name == "lol")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640808869152555008); //@League of Legends
+                    await user.AddRoleAsync(role);
+                    await _event.RoleAddedMessage(user, role);
+                }
+                if (reaction.Emote.Name == "fps")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640808960848429068); //@FPS Junkie
+                    await user.AddRoleAsync(role);
+                    await _event.RoleAddedMessage(user, role);
+                }
+                if (reaction.Emote.Name == "ffbe")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640797372347187200); //@Brave Exvius
+                    await user.AddRoleAsync(role);
+                    await _event.RoleAddedMessage(user, role);
+                }
+                if (reaction.Emote.Name == "poke")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640795935320047618); //@Pokemon Go
                     await user.AddRoleAsync(role);
                     await _event.RoleAddedMessage(user, role);
                 }
@@ -55,7 +85,7 @@ namespace NuBot
         }
         private async Task RemovedReactEvent(Cacheable<IUserMessage, ulong> message, ISocketMessageChannel channel, SocketReaction reaction)
         {
-            if (message.Id == 641061488563322881) //must be updated after every rolecall. Update self reaction in
+            if (message.Id == 641779659922472973) //must be updated after every rolecall. Update self reaction in misc.cs. Should consider changing this to channel ID
             {
                 var user = reaction.User.Value as IGuildUser;
                 if (reaction.Emote.Name == "ffxiv")
@@ -64,9 +94,39 @@ namespace NuBot
                     await user.RemoveRoleAsync(role);
                     await _event.RoleRemovedMessage(user, role);
                 }
+                if (reaction.Emote.Name == "gtav")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640797238024601601); //@GTAV
+                    await user.RemoveRoleAsync(role);
+                    await _event.RoleRemovedMessage(user, role);
+                }
                 if (reaction.Emote.Name == "mhw")
                 {
                     var role = ((ITextChannel)channel).Guild.GetRole(640808758628450324); //@Monster Hunter
+                    await user.RemoveRoleAsync(role);
+                    await _event.RoleRemovedMessage(user, role);
+                }
+                if (reaction.Emote.Name == "lol")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640808869152555008); //@League of Legends
+                    await user.RemoveRoleAsync(role);
+                    await _event.RoleRemovedMessage(user, role);
+                }
+                if (reaction.Emote.Name == "fps")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640808960848429068); //@FPS Junkie
+                    await user.RemoveRoleAsync(role);
+                    await _event.RoleRemovedMessage(user, role);
+                }
+                if (reaction.Emote.Name == "ffbe")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640797372347187200); //@Brave Exvius
+                    await user.RemoveRoleAsync(role);
+                    await _event.RoleRemovedMessage(user, role);
+                }
+                if (reaction.Emote.Name == "poke")
+                {
+                    var role = ((ITextChannel)channel).Guild.GetRole(640795935320047618); //@Pokemon Go
                     await user.RemoveRoleAsync(role);
                     await _event.RoleRemovedMessage(user, role);
                 }
